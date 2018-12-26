@@ -12,7 +12,13 @@ public class CaesarShiftCipher {
         for(int i = 0; i < length; i++){
             currentChar = message.charAt(i);
            
-            sb.append(currentChar);
+           //  sb.append(currentChar); this is the 1st bug
+           // the 2nd bug is with handling the spaces
+            // My fix for the 2nd bug
+            if( currentChar == ' ') {
+                sb.append(currentChar);
+                continue;
+            }
             if (currentChar > 'z' || currentChar < 'a') {
                 return "invalid";
             } else if ((char) (currentChar + shift) > 'z') {
